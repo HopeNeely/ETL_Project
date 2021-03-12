@@ -13,7 +13,6 @@ variety VARCHAR,
 winery VARCHAR
 );
 
--- Create tables for raw data to be loaded into
 CREATE TABLE winexl (
 country VARCHAR,
 points INT,
@@ -24,13 +23,13 @@ variety VARCHAR,
 winery VARCHAR
 );
 
+
 --checking data imports
 SELECT * FROM newwinemag;
 SELECT * FROM winexl;
 
-
 -- Joins tables
-SELECT wine_info.brand, wine_info.first_name, wine_info.last_name, customer_location.address, customer_location.us_state
-FROM wine_info
-JOIN customer_location
-ON customer_name.id = customer_location.id;
+SELECT newwinemag.country, newwinemag.points, newwinemag.price, newwinemag.variety, winexl.winery
+FROM newwinemag
+JOIN winexl
+ON newwinemag.winery = winexl.winery;
